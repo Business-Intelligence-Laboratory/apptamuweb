@@ -1,9 +1,9 @@
-
+import TamuPage from "./component/TamuPage";
 
 function App() {
   return (
-    <div>
-      <h1>Lorem ipsum</h1>
+    <div className="container">
+      <TamuPage/>
     </div>
   );
 }
