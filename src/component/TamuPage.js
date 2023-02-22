@@ -1,17 +1,19 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Autocomplete from '@mui/material/Autocomplete';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import logoLab from '../assets/images/Logo LBI.png';
 
 function Copyright(props) {
   return (
@@ -38,23 +40,23 @@ export default function TamuPage() {
     });
   };
 
+  const instansi = [{label: 'Sistem Informasi UNAND'},{label: 'Teknik Komputer UNAND'}, {label: 'Informatika UNAND'}, {label: 'Lainnya'}]
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Selamat Datang
+          <img src={logoLab} alt='Logo LBI' width={100} height={100}/>
+          <Typography component="h1" variant="h5" align='center'>
+            Selamat Datang di Laboratory of Business Intelligence
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -68,12 +70,43 @@ export default function TamuPage() {
               autoFocus
             />
             <TextField
-              margin="normal"
+              margin="dense"
               required
               fullWidth
               name="noidentitas"
               label="No.Identitas / NIM / NIP"
               id="noidentitas"
+              autoComplete="current-password"
+            />
+            <Autocomplete
+              disablePortal
+              margin="dense"
+              required
+              id="instansi"
+              options={instansi}
+              fullWidth
+              renderInput={(params) => <TextField margin='dense' {...params} label="Instansi" />}
+            />
+            <FormControl margin="dense">
+              <FormLabel id="demo-row-radio-buttons-group-label">Jenis Kelamin</FormLabel>
+              <RadioGroup
+                row
+                required
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                defaultValue="Laki-Laki"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel value="Laki-Laki" control={<Radio />} label="Laki-Laki" />
+                <FormControlLabel value="Perempuan" control={<Radio />} label="Perempuan" />
+              </RadioGroup>
+            </FormControl>
+            <TextField
+              margin="dense"
+              required
+              fullWidth
+              name="statusKunjungan"
+              label="Tujuan Kunjungan"
+              id="statuskunjungan"
               autoComplete="current-password"
             />
             <Button
