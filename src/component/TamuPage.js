@@ -75,6 +75,7 @@ export default function TamuPage() {
     try {
       setShowBackDrop(true)
       const res = await axios.post('https://brave-cow-hoodie.cyclic.app/saveTamu', data, { headers: { "Content-Type": "application/json" } })
+      //const res = await axios.post('http://localhost:1208/saveTamu', data, { headers: { "Content-Type": "application/json" } })
       // console.log(res.data);
       showMessage("success", "Selamat Datang")
       setShowBackDrop(false)
